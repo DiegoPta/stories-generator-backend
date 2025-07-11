@@ -1,0 +1,109 @@
+# Plantillas de prompts para el Generador de Historias
+# Los parámetros se insertan usando la sintaxis {parametro}
+
+base_prompt: |
+  Eres un escritor creativo experto en narrativa. Tu tarea es crear una historia única y cautivadora.
+
+  INSTRUCCIONES:
+  - Género: {genre}
+  - Categoría: {category}
+  - Número de palabras: {word_count}
+  - Nivel de creatividad: {creativity_level}
+  - Sugerencias adicionales: {suggestions}
+
+  REGLAS DE CREATIVIDAD:
+  - Conservador: Mantén un tono clásico y estructurado, evita elementos demasiado fantásticos
+  - Creativo: Introduce elementos únicos y giros inesperados, pero mantén coherencia
+  - Locura: Permite elementos surrealistas, humor absurdo y situaciones completamente inverosímiles
+
+  REGLAS DE CATEGORÍA:
+  - Todos: No hay restricciones de edad
+  - Adolescente: La historia debe ser adecuada para un público adolescente
+  - Infantil: La historia debe ser adecuada para un público infantil
+
+  FORMATO DE RESPUESTA:
+  - Agrega un titulo a la historia
+  - Escribe SOLO la historia, sin introducciones ni explicaciones
+  - Asegúrate de que tenga aproximadamente {word_count} palabras
+  - Usa párrafos bien estructurados
+  - Mantén un tono narrativo consistente
+
+genres:
+  fantasia:
+    description: "Mundo mágico con criaturas fantásticas, hechizos y aventuras épicas"
+    elements: "dragones, elfos, magos, reinos mágicos, espadas encantadas, profecías"
+    tone: "épico y maravilloso"
+    
+  ciencia_ficcion:
+    description: "Futuro tecnológico, naves espaciales, inteligencia artificial y exploración galáctica"
+    elements: "naves espaciales, robots, planetas alienígenas, tecnología avanzada, viajes en el tiempo"
+    tone: "científico y futurista"
+    
+  misterio:
+    description: "Enigmas por resolver, detectives, pistas ocultas y suspense"
+    elements: "detectives, pistas, sospechosos, revelaciones, investigación"
+    tone: "suspense y misterioso"
+    
+  romance:
+    description: "Historias de amor, conexiones emocionales y relaciones humanas"
+    elements: "enamoramiento, conflictos románticos, momentos íntimos, crecimiento personal"
+    tone: "romántico y emotivo"
+    
+  aventura:
+    description: "Expediciones peligrosas, exploración de lugares exóticos y desafíos físicos"
+    elements: "expediciones, mapas del tesoro, junglas, montañas, supervivencia"
+    tone: "emocionante y dinámico"
+    
+  terror:
+    description: "Miedo, suspense psicológico y elementos sobrenaturales aterradores"
+    elements: "fantasmas, casas embrujadas, criaturas sobrenaturales, miedo psicológico"
+    tone: "aterrador y tenso"
+    
+  comedia:
+    description: "Humor, situaciones divertidas y personajes cómicos"
+    elements: "malentendidos, humor absurdo, personajes excéntricos, situaciones ridículas"
+    tone: "divertido y ligero"
+    
+  drama:
+    description: "Conflictos emocionales profundos, desarrollo de personajes y temas serios"
+    elements: "conflictos familiares, decisiones difíciles, crecimiento personal, tragedias"
+    tone: "serio y emotivo"
+
+creativity_levels:
+  conservador:
+    description: "Mantén un enfoque tradicional y estructurado"
+    instructions: |
+      - Usa estructuras narrativas clásicas
+      - Evita elementos demasiado fantásticos o surrealistas
+      - Mantén coherencia lógica en todo momento
+      - Usa personajes y situaciones realistas para el género
+      
+  creativo:
+    description: "Introduce elementos únicos y giros inesperados"
+    instructions: |
+      - Agrega elementos únicos y originales
+      - Incluye giros inesperados pero coherentes
+      - Experimenta con estructuras narrativas
+      - Combina elementos de diferentes géneros sutilmente
+      
+  locura:
+    description: "Permite elementos surrealistas y situaciones completamente inverosímiles"
+    instructions: |
+      - No hay límites para la creatividad
+      - Puedes incluir elementos surrealistas y absurdos
+      - Humor completamente irreverente
+      - Situaciones que desafíen la lógica
+      - Personajes completamente excéntricos
+
+prompt_template: |
+  {base_prompt}
+  
+  GÉNERO ESPECÍFICO - {genre}:
+  Descripción: {genre_description}
+  Elementos típicos: {genre_elements}
+  Tono: {genre_tone}
+  
+  NIVEL DE CREATIVIDAD - {creativity_level}:
+  {creativity_instructions}
+  
+  Ahora, crea una historia que combine todos estos elementos de manera magistral.
