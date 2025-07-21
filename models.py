@@ -1,7 +1,7 @@
 """Definición de los modelos de datos para la API"""
 
 # Python imports.
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional, Dict, Any
 
 
@@ -36,9 +36,8 @@ class StoryResponse(BaseModel):
 
     story: str = Field(..., description="La historia generada")
     metadata: Dict[str, Any] = Field(..., description="Metadatos de la generación")
-
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "story": "Había una vez un dragón que...",
                 "metadata": {
@@ -52,6 +51,7 @@ class StoryResponse(BaseModel):
                 },
             }
         }
+    )
 
 
 class RootResponse(BaseModel):
@@ -63,9 +63,8 @@ class RootResponse(BaseModel):
     endpoints: Dict[str, str] = Field(
         ..., description="Diccionario con los endpoints disponibles"
     )
-
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "message": "Generador de Historias API",
                 "version": "1.0.0",
@@ -77,6 +76,7 @@ class RootResponse(BaseModel):
                 },
             }
         }
+    )
 
 
 class HealthResponse(BaseModel):
@@ -85,12 +85,12 @@ class HealthResponse(BaseModel):
     status: str = Field(..., description="Estado general de la API")
     openai_status: str = Field(..., description="Estado de la conexión con OpenAI")
     timestamp: str = Field(..., description="Marca de tiempo de la verificación")
-
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "status": "healthy",
                 "openai_status": "connected",
                 "timestamp": "2024-06-07T12:34:56.789Z",
             }
         }
+    )
